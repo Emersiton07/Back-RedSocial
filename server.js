@@ -1,19 +1,15 @@
-// server.js
 const express = require('express');
-const mysql = require('mysql2');
-const artworkRoutes = require('./routes/ArtWorksRoutes'); // Importa las rutas
-require('dotenv').config(); // Carga las variables de entorno
-
 const app = express();
-const PORT = process.env.PORT || 5000;
+const artworksRoutes = require('./routes/ArtWorksRoutes');
 
-// Middleware
+// Middleware para parsear JSON
 app.use(express.json());
 
-// Usa las rutas
-app.use('/api', artworkRoutes); // Prefijo para las rutas de artworks
+// Usar el router con el prefijo /artworks
+app.use('/artworks', artworksRoutes); // Este es el prefijo
 
 // Iniciar el servidor
+const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
+  console.log(`Server is running on port ${PORT}`);
 });
