@@ -1,7 +1,7 @@
 // server.js
 const express = require('express');
 const mysql = require('mysql2');
-const artworkRoutes = require('./artworkRoutes'); // Importa las rutas
+const artworkRoutes = require('./artworksRoutes'); // Importa las rutas
 require('dotenv').config(); // Carga las variables de entorno
 
 const app = express();
