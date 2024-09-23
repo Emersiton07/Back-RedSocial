@@ -12,7 +12,7 @@ const db = mysql.createConnection({
 
 // Función para obtener todas las obras
 const getAllArtworks = (callback) => {
-  const sql = 'SELECT * FROM artworks'; // Asume que tu tabla se llama 'artworks'
+  const sql = 'SELECT * FROM artwork'; // Asume que tu tabla se llama 'artworks'
   db.query(sql, (err, results) => {
     if (err) {
       return callback(err, null);
