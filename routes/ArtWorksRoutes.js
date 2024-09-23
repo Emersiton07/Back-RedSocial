@@ -1,7 +1,7 @@
 // artworkRoutes.js
 const express = require('express');
 const router = express.Router();
-const artworkModel = require('./artworkModel');
+const artworkModel = require('./models/ArtWork');
 
 // Ruta para obtener todas las obras
 router.get('/artworks', (req, res) => {
