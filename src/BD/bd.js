@@ -5,7 +5,7 @@ const Obra = require("../models/Obra");
 // Conexión a MongoDB
 async function conexion() {
   try {
-    await mongoose.connect("mongodb+srv://emersonbautista:redsocialobras@cluster0.7ww8e.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0");
+    await mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true });
     console.log("Conexión a MongoDB exitosa");
   } catch (err) {
     console.error("Error conectando a MongoDB:", err);

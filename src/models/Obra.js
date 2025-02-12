@@ -12,11 +12,6 @@ const obraSchema = new mongoose.Schema({
     longitud: { type: Number, required: true },
     direccion: String,
   },
-  dimensiones: {
-    ancho: { type: Number, required: true },
-    alto: { type: Number, required: true },
-    unidad: { type: String, default: "cm" },
-  },
   imagenes: [String],
   publicada_por: {
     usuario_id: { type: mongoose.Schema.Types.ObjectId, ref: "Usuario" },
@@ -38,6 +33,12 @@ const obraSchema = new mongoose.Schema({
       usuario_id: { type: mongoose.Schema.Types.ObjectId, ref: "Usuario" },
       nombre_usuario: String,
       calificacion: { type: Number, min: 0, max: 5 },
+    },
+  ],
+  likes: [
+    {
+      usuario_id: { type: mongoose.Schema.Types.ObjectId, ref: "Usuario" },
+      nombre_usuario: String,
     },
   ],
   promedio_calificaciones: { type: Number, default: 0 },
