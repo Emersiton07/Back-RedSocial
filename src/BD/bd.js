@@ -1,3 +1,4 @@
+require("dotenv").config();
 const mongoose = require("mongoose");
 const Usuario = require("../models/Usuario");
 const Obra = require("../models/Obra");
@@ -27,7 +28,6 @@ const obras = [
     fecha_creacion: new Date("2022-01-15"),
     dueño: { nombre: "Juan Pérez", contacto: "juan.perez@example.com" },
     ubicacion: { latitud: 5.5453, longitud: -73.3577, direccion: "Calle 10 #5-15" },
-    dimensiones: { ancho: 10, alto: 5, unidad: "metros" },
     imagenes: ["https://dynamic-media-cdn.tripadvisor.com/media/photo-o/09/23/23/c5/catedral-basilica-metropolitan.jpg?w=800&h=-1&s=1"],
     publicada_por: { usuario_id: null, nombre: "Juan Pérez" },
     fecha_publicacion: new Date(),
@@ -35,11 +35,15 @@ const obras = [
     etiquetas: ["amanecer", "colorido", "realismo"],
     comentarios: [
       { usuario_id: null, nombre_usuario: "Ana Gómez", comentario: "¡Me encanta este mural!", fecha: new Date() },
-      { usuario_id: null, nombre_usuario: "Juan Pérez", comentario: "¡Me encanta este mural gay!", fecha: new Date() },
+      { usuario_id: null, nombre_usuario: "Juan Pérez", comentario: "¡Me encanta este mural prueba!", fecha: new Date() },
     ],
     calificaciones: [
       { usuario_id: null, nombre_usuario: "Carlos Ruiz", calificacion: 5 },
       { usuario_id: null, nombre_usuario: "Ana Gómez", calificacion: 4 },
+    ],
+    likes: [
+      { usuario_id: null, nombre_usuario: "Carlos Ruiz" },
+      { usuario_id: null, nombre_usuario: "Ana Gómez"},
     ],
     promedio_calificaciones: 4.5,
   },
@@ -48,7 +52,6 @@ const obras = [
     fecha_creacion: new Date("2023-05-20"),
     dueño: { nombre: "Ana Gómez", contacto: "ana.gomez@example.com" },
     ubicacion: { latitud: 5.5353, longitud: -73.3577, direccion: "Carrera 7 #12-45" },
-    dimensiones: { ancho: 15, alto: 6, unidad: "metros" },
     imagenes: ["https://upload.wikimedia.org/wikipedia/commons/d/dc/Tunja_centro_historico7.jpg", "https://upload.wikimedia.org/wikipedia/commons/d/dc/Tunja_centro_historico7.jpg"],
     publicada_por: { usuario_id: null, nombre: "Ana Gómez" },
     fecha_publicacion: new Date(),
@@ -61,13 +64,16 @@ const obras = [
       { usuario_id: null, nombre_usuario: "Luisa Martínez", calificacion: 5 },
       { usuario_id: null, nombre_usuario: "Carlos Ruiz", calificacion: 4 },
     ],
+    likes: [
+      { usuario_id: null, nombre_usuario: "Carlos Ruiz" },
+      { usuario_id: null, nombre_usuario: "Ana Gómez"},
+    ],
     promedio_calificaciones: 4.5,
   },{
     nombre: "UPTC",
     fecha_creacion: new Date("2022-01-15"),
     dueño: { nombre: "Juan Pérez", contacto: "juan.perez@example.com" },
     ubicacion: { latitud: 5.550719, longitud: -73.354981, direccion: "Calle 10 #5-15" },
-    dimensiones: { ancho: 10, alto: 5, unidad: "metros" },
     imagenes: ["https://dynamic-media-cdn.tripadvisor.com/media/photo-o/09/23/23/c5/catedral-basilica-metropolitan.jpg?w=800&h=-1&s=1"],
     publicada_por: { usuario_id: null, nombre: "Juan Pérez" },
     fecha_publicacion: new Date(),
@@ -79,6 +85,9 @@ const obras = [
     calificaciones: [
       { usuario_id: null, nombre_usuario: "Carlos Ruiz", calificacion: 5 },
       { usuario_id: null, nombre_usuario: "Ana Gómez", calificacion: 4 },
+    ],likes: [
+      { usuario_id: null, nombre_usuario: "Carlos Ruiz" },
+      { usuario_id: null, nombre_usuario: "Ana Gómez"},
     ],
     promedio_calificaciones: 4.5,
   }
