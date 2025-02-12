@@ -58,4 +58,26 @@ router.delete("/:id", async (req, res) => {
   }
 });
 
+// Agregar un comentario a una obra
+router.post("/comentarios/nuevo", async (req, res) => {
+  try {
+    
+    const {obra_id, usuario_id, nombre_usuario, comentario } = req.body;
+    const obra = await Obra.findById(obra_id);
+
+    if (!obra) {
+      return res.status(404).json({ error: "Obra no encontrada" });
+    }
+
+    // Agregar el comentario al array de comentarios
+    obra.comentarios.push({ usuario_id, nombre_usuario, comentario, fecha: new Date() });
+    await obra.save();
+
+    res.json({ message: "Comentario agregado con éxito", obra });
+  } catch (err) {
+    res.status(500).json({ error: "Error al agregar comentario", detalle: err.message });
+  }
+});
+
+
 module.exports = router;
